@@ -36,8 +36,7 @@ html {
 }
 
 button,
-input,
-select {
+input {
   -webkit-appearance: none;
   outline: none;
 }
@@ -47,6 +46,20 @@ button,
 select {
   cursor: pointer;
 }
+select {
+	-webkit-appearance: auto;
+	padding: 16px 14px;
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+	margin-bottom: 12px;
+	border: 1px solid #dedddd;
+	outline: none;
+	background: transparent;
+	color: #7D7D7D;
+	border-radius: 4px;
+}
+
 a {
   text-decoration: none;
 }

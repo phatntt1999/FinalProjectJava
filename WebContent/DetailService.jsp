@@ -373,8 +373,8 @@
 	<!-- //our-products -->
 
 	
-		<input type="text" class="date" value="<%=dateHolding%>" disabled="disabled">
-		<input type="text" class="searchLocation" value="<%=ListService.get(0).getAreaHolding().toString()%>" disabled="disabled">
+		<input type="text" class="date" value="<%=dateHolding%>" disabled>
+		<input type="text" class="searchLocation" value="<%=ListService.get(0).getAreaHolding().toString()%>" disabled>
 		
 		<!-- move top -->
 		<button onclick="topFunction()" id="movetop" title="Go to top">

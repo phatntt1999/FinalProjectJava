@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Event Holding</title>
+<title>Welcome Organizer</title>
 <link
 	href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
 	rel="stylesheet">
@@ -23,7 +23,12 @@
 </head>
 
 <body>
-	<jsp:include page="fragments/HeaderAfterLogin.jsp"></jsp:include>
+	<%
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login-form.jsp?error=1");
+		} else {
+	%>
+	<jsp:include page="fragments/HeaderOrganizer.jsp"></jsp:include>
 	
 
 	<!-- main-slider -->
@@ -106,41 +111,6 @@
 		</div>
 	</section>
 	<!-- /main-slider -->
-
-	<div class="booking-panel">
-		<div class="container py-lg-4">
-			<form action="SearchServiceServlet" method="POST">
-			  <div class="grids-area-hny main-cont-wthree-fea row">
-				<div class="col-lg-3 col-md-3 col-6 grids-feature forms-25-info">
-						<label>Location:</label> <input type="text" name="SearchLocation" id=""
-							style="width: inherit; padding:10px 10px;" placeholder="Enter area you want...">
-					</div>
-					<div class="col-lg-3 col-md-3 col-6 grids-feature">
-						<label>Date Holding:</label> 
-						<input type="date" name="DateHolding"
-							 style="width: inherit; padding:10px 10px;">
-					</div>
-					<div class="col-lg-3 col-md-3 col-6 grids-feature">
-						<label>Check in</label> <select name="no-of-participants"
-							id="no-of-participants" style="width: inherit; padding: 10px 10px;">
-							<option value="30">30-50 persons</option>
-							<option value="40">40-60 persons</option>
-							<option value="50">50-80 persons</option>
-							<option value="70">70-100 persons</option>
-							<option value="100">100-150 persons</option>
-						</select>
-					</div>
-					<div class="col-lg-3 col-md-3 col-6 grids-feature">
-						<!-- <button class="submit">Search</button> -->
-						<input type="submit"
-							style="margin-top: 28px !important; padding: 14px 65px; margin-left: 10px;"
-							class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2"
-							value="Submit">
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
 
 	<!--/feature-grids-->
 	<section class="w3l-features py-5" id="features">
@@ -570,7 +540,7 @@
 		</div>
 	</section>
 	<!-- //testimonials section -->
-	
+	<% } %>	
 		<!-- move top -->
 		<button onclick="topFunction()" id="movetop" title="Go to top">
 			&#10548;</button>
@@ -595,10 +565,8 @@
       }
     </script>
 		<!-- /move top -->
-	</footer>
 
-	<!-- //copyright -->
-	<!-- Template JavaScript -->
+	<!--  JavaScript -->
 	<script src="assets/js/jquery-3.3.1.min.js"></script>
 	<script src="assets/js/theme-change.js"></script>
 	<!-- owlcarousel -->

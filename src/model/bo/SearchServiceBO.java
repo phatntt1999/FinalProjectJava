@@ -13,5 +13,10 @@ public class SearchServiceBO {
 		return searchSeviceDAO.getListService(searchLocation, noOfParticipant);
 	}
 	
+	public ArrayList<Service> getListService() {
+		// TODO Auto-generated method stub
+		return searchSeviceDAO.getListService();
+	}
+	
 	
 }

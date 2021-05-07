@@ -14739,7 +14739,7 @@ header.nav-fixed .phone-btn{
   visibility: hidden;
   opacity: 0;
   z-index: 99;
-  background: var(--bg-color);
+  background: #ffffffbf;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
   height: 100%;
   width: 100%;
@@ -14754,18 +14754,18 @@ header.nav-fixed .phone-btn{
   position: relative;
   margin: 0rem auto;
   padding: 15px;
-  top: 40%;
-  max-width: 600px;
+  top: 15%;
+  max-width: 625px;
 }
 
 .w3l-header-4 .popup .close {
   position: absolute;
   right: 0px;
-  top: -100px;
+  top: -60px;
   transition: all 200ms;
   font-size: 50px;
   text-decoration: none;
-  color: var(--heading-color);
+  color: #252525;
   opacity: 0.3;
 }
 

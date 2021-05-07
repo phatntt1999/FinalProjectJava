@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/style-starter.css">
+<link rel="stylesheet" href="assets/css/add-new.css">
 </head>
 <body>
 	<header id="site-header" class="fixed-top">
@@ -37,11 +38,17 @@
 							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 							</li>
 						</ul>
-						<ul class="navbar-nav search-right mt-lg-0 mt-2">
+						<ul class="navbar-nav search-right mt-lg-0 mt-2" style="display: flex;">
 							<!-- <li class="nav-item mr-2" title="Search"><a href="#search" class="btn search-search">
                   <span class="fa fa-search" aria-hidden="true"></span></a></li> -->
-							<li class="nav-item mx-xl-4"><a href="#"
-								class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"></span><%=(String)session.getAttribute("accountInfor")%></a></li>
+							<li class="nav-item mx-xl-4" style="margin-right: 0.4rem !important;"><a href="#"
+								class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"
+								style="padding: 12px 21px; font-size: 17px;"></span>
+								<%=(String)session.getAttribute("accountInfor")%></a></li>
+							<li class="nav-item mx-xl-4" style="margin-right: 0.6rem !important;"><a href="#add-new"
+                                    class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"
+                                    style="padding: 12px 21px; font-size: 17px;"></span>
+                                    New Event</a></li>
 							<li class="nav-item mx-xl-4"><a href="LogoutSessionServlet"><img
 								src="assets/images/user.png" width=50px alt="avatar"
 								id="role-avatar"></a> </li>
@@ -49,19 +56,35 @@
 
 						<!-- //toggle switch for light and dark theme -->
 						<!-- search popup -->
-						<div id="search" class="pop-overlay">
-							<div class="popup">
-								<form action="#" method="GET" class="d-sm-flex">
-									<input type="search" placeholder="Search.." name="search"
-										required="required" autofocus>
-									<button type="submit">
-										<span class="fa fa-search"></span>
-									</button>
+						<!-- search popup -->
+                        <div id="add-new" class="pop-overlay">
+                            <div class="popup">
+								<form action="AddNewServiceServlet" method="POST" style="background-color: #f2f2f2">
+									<label for="Ename" class="lable-add-new">Name Event Service</label> 
+									<input
+										type="text" id="fname" name="nameEvent"
+										placeholder="Name Event Service..."> 
+									<label for="description" class="lable-add-new">Description</label>
+									<input type="text" id="lname" name="description"
+										placeholder="Event Description..."> 
+									<label for="area" class="lable-add-new">Area</label>
+									<input type="text" id="lname" name="area"
+										placeholder="Area..."> 
+										<label for="country" class="lable-add-new">No.of Participants</label> 
+									<select id="country" name="no-of-participants">
+										<option value="30">30-49 persons</option>
+										<option value="40">40-59 persons</option>
+										<option value="50">50-79 persons</option>
+										<option value="70">70-99 persons</option>
+										<option value="100">100-150 persons</option>
+									</select> 
+									<input type="submit" value="Submit"> 
 									<a class="close" href="#">&times;</a>
 								</form>
 							</div>
-						</div>
-						<!-- /search popup -->
+                        </div>
+                        <!-- /search popup -->
+						
 					</div>
 					<!-- toggle switch for light and dark theme -->
 					<div class="mobile-position">

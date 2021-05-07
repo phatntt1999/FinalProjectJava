@@ -8,21 +8,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import model.bean.Account;
 import model.bean.Service;
-import model.bo.ShowDetailServiceBO;
+import model.bo.ShowListAccountBO;
+import model.bo.ShowListServiceBO;
 
 /**
- * Servlet implementation class ShowDetailServiceServlet
+ * Servlet implementation class ShowHomepageServlet
  */
-public class ShowDetailServiceServlet extends HttpServlet {
+public class ShowHomepageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowDetailServiceServlet() {
+    public ShowHomepageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +32,15 @@ public class ShowDetailServiceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		ShowListServiceBO showListServiceBO = new ShowListServiceBO();
+
+		ArrayList<Service> ListService = showListServiceBO.getListService();
+		
+		RequestDispatcher rd = null;
+		
+		request.setAttribute("ListService", ListService);
+		rd = request.getRequestDispatcher("welcomeOrganizer.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -40,22 +48,8 @@ public class ShowDetailServiceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		if (session.getAttribute("accountInfor") == null) {
-			response.sendRedirect("login.jsp?error=1");
-		} else {
-			String serId = request.getParameter("serId");
-			String dateHolding = request.getParameter("dateHolding");
-			ShowDetailServiceBO showDetailServiceBO = new ShowDetailServiceBO();
-			ArrayList<Service> returnedList = showDetailServiceBO.showDetailService(serId);
-			request.setAttribute("detailService", returnedList);
-			request.setAttribute("dateHolding", dateHolding);
-			
-			RequestDispatcher rd = null;
-			rd = request
-					.getRequestDispatcher("DetailService.jsp");
-			rd.forward(request, response);
-		}
+		doGet(request, response);
+		
 	}
 
 }

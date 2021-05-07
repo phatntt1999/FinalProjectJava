@@ -60,4 +60,40 @@ public class SearchServiceDAO extends BaseDAO{
 		return returnedList;
 	}
 	
+	public ArrayList<Service> getListService() {
+		ArrayList<Service> returnedList = new ArrayList<Service>();
+		
+		Connection connection = getConnection();
+		
+		String sql = "SELECT * FROM EventService ORDER BY NameService";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = connection.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			Service item = null;
+			
+			while (rs.next()) {
+				item = new Service();
+				item.setIdService(rs.getString("IdService"));
+				item.setIdOrganizer(rs.getString("IdOrganizer"));
+				item.setNameService(rs.getString("NameService"));
+				item.setNumberOfPeople(rs.getInt("NumberOfPeople"));
+				item.setAreaHolding(rs.getString("areaHolding"));
+				
+				returnedList.add(item);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection, pstmt, rs);
+		}	
+		return returnedList;
+	}
+	
 }
