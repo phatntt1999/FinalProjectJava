@@ -37,6 +37,7 @@
 	<% ArrayList<Service> ListService = (ArrayList<Service>)request.getAttribute("detailService"); %>
 	<%String dateHolding = (String)request.getAttribute("dateHolding"); %>
 	
+	
 	<div class="inner-banner"></div>
 	<section class="w3l-breadcrumb">
 		<div class="container">
@@ -103,7 +104,7 @@
 								</div>
 								<div class="col-md-9 col-10 featured_grid_right_info pl-lg-0">
 									<h4>
-										<a class="link-hny icon-services-page" href="#url">$20</a>
+										<a class="link-hny icon-services-page" href="#url"><%=ListService.get(0).getPrice()%></a>
 									</h4>
 
 								</div>
@@ -113,7 +114,7 @@
 							<div class="row features-hny-inner-gd">
 								<div class="col-md-3 col-2">
 									<div class="icon_left_grid">
-										<span class="fa fa-ambulance" aria-hidden="true"></span>
+										<span class="fa fa-bus" aria-hidden="true"></span>
 									</div>
 								</div>
 								<div class="col-md-9 col-10 featured_grid_right_info pl-lg-0 ">
@@ -144,7 +145,8 @@
 				<div class="col-lg-6 left-wthree-img mt-lg-0 mt-4 pl-lg-5">
 					<img src="assets/images/indoor.jpg" alt=""
 						class="img-fluid radius-image"> <a
-						class="btn btn-style btn-primary mt-sm-5 mt-4" href="#"
+						class="btn btn-style btn-primary mt-sm-5 mt-4" 
+						href="SubmitDataForPaymentServlet?serId=<%=ListService.get(0).getIdService()%>&dateHolding=<%=dateHolding%>"
 						style="margin-left: 60%; position: absolute; bottom: 20px; right: 25px; font-size: 25px; line-height: 40px;">Book
 						now!</a>
 				</div>
@@ -180,7 +182,7 @@
 								
 							</ul>
 							<a class="btn btn-style btn-primary mt-sm-5 mt-4" href="#">Price:
-								$20 - $50</a>
+								<%=ListService.get(0).getPrice()%> USD</a>
 						</div>
 					</div>
 					<div class="col-lg-6 column mt-lg-0 mt-md-5 mt-4">
@@ -350,7 +352,7 @@
 							lorem dolor sit. it’s clinically clean. Lorem ipsum dolor sit.</p>
 						<div class="row my-lg-5 my-4">
 							<div class="col-lg-6">
-								<img src="assets/images/banner2.jpg"
+								<img src="assets/images/abcabc.jpg"
 									class="img-fluid radius-image" alt="project image">
 							</div>
 							<div class="col-lg-6 mt-lg-0 mt-4">
@@ -363,7 +365,7 @@
 						</div>
 					</div>
 					<div class="col-lg-5 mt-lg-0 mt-md-5 mt-4 pl-lg-5">
-						<img src="assets/images/ab2.jpg" class="img-fluid radius-image"
+						<img src="assets/images/team111.jpg" class="img-fluid radius-image"
 							alt="project image">
 					</div>
 				</div>

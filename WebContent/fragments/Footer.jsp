@@ -39,7 +39,7 @@
             </form>
           </div>
           <div class="col-lg-4 col-md-6  footer-list-29 footer-4 mt-lg-0 mt-5 pl-lg-5">
-            <h6 class="footer-title-29">Instagram
+            <!-- <h6 class="footer-title-29">Instagram
             </h6>
             <ul class="w3linst-imgs row">
               <li class="col-4"><a href="#"><img src="assets/images/b1.jpg" alt="" class="radius-image img-fluid"></a>
@@ -57,7 +57,7 @@
               <li class="col-4 mt-4"><a href="#"><img src="assets/images/b6.jpg" alt=""
                     class="radius-image img-fluid"></a>
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </div>

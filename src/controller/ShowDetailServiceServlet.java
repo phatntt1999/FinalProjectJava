@@ -42,14 +42,16 @@ public class ShowDetailServiceServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		if (session.getAttribute("accountInfor") == null) {
-			response.sendRedirect("login.jsp?error=1");
+			response.sendRedirect("login-form.jsp?error=1");
 		} else {
 			String serId = request.getParameter("serId");
 			String dateHolding = request.getParameter("dateHolding");
+			String noOfParticipant = request.getParameter("noOfParticipant");
 			ShowDetailServiceBO showDetailServiceBO = new ShowDetailServiceBO();
 			ArrayList<Service> returnedList = showDetailServiceBO.showDetailService(serId);
 			request.setAttribute("detailService", returnedList);
 			request.setAttribute("dateHolding", dateHolding);
+			request.setAttribute("noOfParticipant", noOfParticipant);
 			
 			RequestDispatcher rd = null;
 			rd = request

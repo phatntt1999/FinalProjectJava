@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.Account;
 import model.bean.Service;
@@ -32,15 +33,29 @@ public class ShowHomepageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ShowListServiceBO showListServiceBO = new ShowListServiceBO();
+		HttpSession session = request.getSession();
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login-form.jsp?error=1");
+		} else {
+			ShowListServiceBO showListServiceBO = new ShowListServiceBO();
 
-		ArrayList<Service> ListService = showListServiceBO.getListService();
+			ArrayList<Service> ListService = showListServiceBO.getListService();
+			
+			RequestDispatcher rd = null;
+			
+			request.setAttribute("ListService", ListService);
+			if((int)session.getAttribute("role") == 1) {
+				rd = request.getRequestDispatcher("welcomeUser.jsp");
+				rd.forward(request, response);
+			}
+			else {
+				rd = request.getRequestDispatcher("welcomeOrganizer.jsp");
+				rd.forward(request, response);
+			}
+			
+		}
 		
-		RequestDispatcher rd = null;
 		
-		request.setAttribute("ListService", ListService);
-		rd = request.getRequestDispatcher("welcomeOrganizer.jsp");
-		rd.forward(request, response);
 	}
 
 	/**

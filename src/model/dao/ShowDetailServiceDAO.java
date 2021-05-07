@@ -38,6 +38,7 @@ public class ShowDetailServiceDAO extends BaseDAO{
 				item.setPhoneNumberOrganizer(rs.getString("phoneNumberOrganizer"));
 				item.setNameOrganizer(rs.getString("NameOrganizer"));
 				item.setDescriptionService(rs.getString("Activity"));
+				item.setPrice(rs.getFloat("Price"));
 				
 				returnedList.add(item);
 			}

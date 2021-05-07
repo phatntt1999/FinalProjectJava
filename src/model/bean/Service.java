@@ -9,6 +9,8 @@ public class Service {
 	private String DescriptionService;
 	private String NameOrganizer;
 	private String PhoneNumberOrganizer;
+	private float Price;
+	
 	public String getIdService() {
 		return IdService;
 	}
@@ -56,5 +58,11 @@ public class Service {
 	}
 	public void setDescriptionService(String descriptionService) {
 		DescriptionService = descriptionService;
+	}
+	public float getPrice() {
+		return Price;
+	}
+	public void setPrice(float price) {
+		Price = price;
 	}
 }

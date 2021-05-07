@@ -1,904 +1,126 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page import="model.bean.Service"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Event Holding</title>
-<link
-	href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<!-- Embeded CSS -->
-<link rel="stylesheet" href="assets/css/style-starter.css">
-<link rel="stylesheet" href="assets/css/form.css">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Order Payment</title>
+        <!-- Bootstrap core CSS -->
+        <link href="assets/paymentAssets/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Custom styles for this template -->
+        <link href="assets/paymentAssets/jumbotron-narrow.css" rel="stylesheet">      
+        <script src="assets/paymentAssets/jquery-1.11.3.min.js"></script>
+    </head>
 
-<!-- Bootstrap form choosing -->
+    <body>
+	<%
+		ArrayList<Service> ListService = (ArrayList<Service>) request.getAttribute("DetailService");
+	%>
+	<%
+		String lastestIdOrder = (String) request.getAttribute("LastestIdOrder");
+	%>
+	<div class="container">
+            <div class="header clearfix">
 
-
-</head>
-
-<body>
-	<%@ include file="fragments/NomalHeader.html" %>
-	<%-- <jsp:include page="fragments/HeaderAfterLogin.jsp"></jsp:include> --%>
-	<!-- <header id="site-header" class="fixed-top">
-		<section class="w3l-header-4">
-			<div class="container">
-				<nav class="navbar navbar-expand-lg navbar-light">
-					<h1>
-						<a class="navbar-brand" href="index.jsp">Event<span
-							class="sublog">Holding.</span>
-						</a>
-					</h1>
-					<button class="navbar-toggler collapsed" type="button"
-						data-toggle="collapse" data-target="#navbarNav"
-						aria-controls="navbarNav" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span class="fa icon-expand fa-bars"></span> <span
-							class="fa icon-close fa-times"></span>
-					</button>
-
-					<div class="collapse navbar-collapse" id="navbarNav">
-						<ul class="navbar-nav">
-							<li class="nav-item active"><a class="nav-link"
-								href="index.html">Home </a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">About</a>
-							</li>
-							<li class="nav-item"><a class="nav-link"
-								href="services.html">Services</a></li>
-
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-							</li>
-						</ul>
-						<ul class="navbar-nav search-right mt-lg-0 mt-2">
-							<li class="nav-item mr-2" title="Search"><a href="#search" class="btn search-search">
-                  <span class="fa fa-search" aria-hidden="true"></span></a></li>
-							<li class="nav-item mx-xl-4"><a href="#"
-								class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"></span>
-									Register</a></li>
-							<li class="nav-item mx-xl-4login"><a href="login-form.jsp"
-								class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"></span>
-									Login</a></li>
-						</ul>
-
-						//toggle switch for light and dark theme
-						search popup
-						<div id="search" class="pop-overlay">
-							<div class="popup">
-								<form action="#" method="GET" class="d-sm-flex">
-									<input type="search" placeholder="Search.." name="search"
-										required="required" autofocus>
-									<button type="submit">
-										<span class="fa fa-search"></span>
-									</button>
-									<a class="close" href="#">&times;</a>
-								</form>
-							</div>
-						</div>
-						/search popup
-					</div>
-					toggle switch for light and dark theme
-					<div class="mobile-position">
-						<nav class="navigation">
-							<div class="theme-switch-wrapper">
-								<label class="theme-switch" for="checkbox"> <input
-									type="checkbox" id="checkbox">
-									<div class="mode-container">
-										<i class="gg-sun"></i> <i class="gg-moon"></i>
-									</div>
-								</label>
-							</div>
-						</nav>
-					</div>
-				</nav>
-			</div>
-		</section>
-	</header> -->
-	<!--//header-->
-
-	<!-- main-slider -->
-	<section class="w3l-main-slider banner-slider" id="home">
-		<div class="owl-one owl-carousel owl-theme">
-			<div class="item">
-				<div class="slider-info banner-view banner-top1">
-					<div class="container">
-						<div class="banner-info">
-							<h3>Corporate Team Building.</h3>
-							<div class="banner-info-top">
-								<p>Lorem ipsum viverra feugiat. Pellen tesque libero ut
-									justo, ultrices in ligula. Semper at tempufddfel. Lorem ipsum
-									dolor sit amet elit.</p>
-								<a href="#" class="btn btn-style btn-outline-light mt-sm-5 mt-4">Read
-									More </a>
-
-							</div>
-						</div>
-						<div class="banner-info-top-grids">
-							<h5 class="text-lg-left">
-								<strong>Our Location : </strong> 253 Adams Ave, Iowa
-							</h5>
-							<h5 class="text-lg-right">
-								<strong> Open Hours : </strong> Mon - Sat 8am - 6pm
-							</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="slider-info banner-view banner-top2">
-					<div class="container">
-						<div class="banner-info">
-							<h3>Caring is More Daring.</h3>
-							<div class="banner-info-top">
-								<p>Lorem ipsum viverra feugiat. Pellen tesque libero ut
-									justo, ultrices in ligula. Semper at tempufddfel. Lorem ipsum
-									dolor sit amet elit.</p>
-								<a href="#" class="btn btn-style btn-outline-light mt-sm-5 mt-4">Read
-									More </a>
-
-							</div>
-						</div>
-						<div class="banner-info-top-grids">
-							<h5 class="text-lg-left">
-								<strong>Our Location : </strong> 253 Adams Ave, Iowa
-							</h5>
-							<h5 class="text-lg-right">
-								<strong> Open Hours : </strong> Mon - Sat 8am - 6pm
-							</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="slider-info banner-view banner-top3">
-					<div class="container">
-						<div class="banner-info">
-							<h3>Group - Strength of each member.</h3>
-							<div class="banner-info-top">
-								<p>Lorem ipsum viverra feugiat. Pellen tesque libero ut
-									justo, ultrices in ligula. Semper at tempufddfel. Lorem ipsum
-									dolor sit amet elit.</p>
-								<a href="#" class="btn btn-style btn-outline-light mt-sm-5 mt-4">Read
-									More </a>
-							</div>
-						</div>
-						<div class="banner-info-top-grids">
-							<h5 class="text-lg-left">
-								<strong>Our Location : </strong> 253 Adams Ave, Iowa
-							</h5>
-							<h5 class="text-lg-right">
-								<strong> Open Hours : </strong> Mon - Sat 8am - 6pm
-							</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /main-slider -->
-
-	<div class="booking-panel">
-		<div class="container py-lg-4">
-			<div class="grids-area-hny main-cont-wthree-fea row">
-					<div class="col-lg-3 col-md-3 col-6 grids-feature forms-25-info">
-						<label>Location:</label> <input type="text" name="clearfix" id=""
-							style="width: inherit; padding:10px 10px;" placeholder="Enter area you want...">
-					</div>
-					<div class="col-lg-3 col-md-3 col-6 grids-feature">
-						<label>Date Holding:</label> 
-						<input type="date" name="clearfix"
-							id="" style="width: inherit; padding:10px 10px;">
-					</div>
-					<div class="col-lg-3 col-md-3 col-6 grids-feature">
-						<label>check in</label> <select name="no-of-participants"
-							id="no-of-participants" value="30-50 persons"
-							style="width: inherit; padding: 10px 10px;">
-							<option value="30">30-50 persons</option>
-							<option value="40">40-60 persons</option>
-							<option value="50">50-80 persons</option>
-							<option value="70">70-100 persons</option>
-							<option value="100">100-150 persons</option>
-						</select>
-					</div>
-					<div class="col-lg-3 col-md-3 col-6 grids-feature">
-						<!-- <button class="submit">Search</button> -->
-						<input type="submit"
-							style="margin-top: 28px !important; padding: 14px 65px; margin-left: 10px;"
-							class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2"
-							value="Submit">
-					</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!--/feature-grids-->
-	<section class="w3l-features py-5" id="features">
-		<div class="container py-lg-4">
-			<div class="grids-area-hny main-cont-wthree-fea row">
-				<div class="col-lg-2 col-md-3 col-6 grids-feature">
-					<div class="area-box">
-						<div class="icon">
-							<span class="fa fa-snowflake-o"></span>
-						</div>
-						<h4>
-							<a href="#feature" class="title-head">Fresh Air</a>
-						</h4>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-6 grids-feature">
-					<div class="area-box mb-lg-0">
-						<div class="icon">
-							<span class="fa fa-cutlery"></span>
-						</div>
-						<h4>
-							<a href="#feature" class="title-head">Healthy Meals</a>
-						</h4>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-6 grids-feature">
-					<div class="area-box mb-lg-0">
-						<div class="icon">
-							<span class="fa fa-sign-language"></span>
-						</div>
-						<h4>
-							<a href="#feature" class="title-head">Collaborate</a>
-						</h4>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-6 grids-feature">
-					<div class="area-box">
-						<div class="icon">
-							<span class="fa fa-sitemap"></span>
-						</div>
-						<h4>
-							<a href="#feature" class="title-head">Relationship</a>
-						</h4>
-
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-6 grids-feature">
-					<div class="area-box mb-lg-0">
-						<div class="icon">
-							<span class="fa fa-fire"></span>
-						</div>
-						<h4>
-							<a href="#feature" class="title-head">Energetic</a>
-						</h4>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-6 grids-feature">
-					<div class="area-box">
-						<div class="icon">
-							<span class="fa fa-user-md"> </span>
-						</div>
-						<h4>
-							<a href="#feature" class="title-head">Safety</a>
-						</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--//feature-grids-->
-
-
-
-	<!--/about-section-->
-	<section class="w3l-index3" id="about">
-		<div class="midd-w3 py-5">
-			<div class="container py-lg-5 py-md-3">
-				<div class="row">
-					<div class="col-lg-6 mb-lg-0 mb-md-5 mb-4 align-self pr-lg-5">
-						<div class="title-content text-left">
-							<h6 class="title-subhny mb-2">
-								<span>Team-building classification</span>
-							</h6>
-							<h3 class="title-w3l">Team Building Indoor.</h3>
-						</div>
-						<p class="mt-md-4 mt-3">Lorem ipsum viverra feugiat. Pellen
-							tesque libero ut justo, ultrices in ligula. Semper at
-							tempufddfel. Lorem ipsum dolor sit amet elit. Non quae, fugiat
-							nihil ad. Lorem ipsum dolor sit amet. Lorem ipsum init dolor sit,
-							amet elit. Dolor ipsum non velit, culpa! Vivamus a et ut justo,
-							init in dolor et.</p>
-						<a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="#">
-							Read More</a>
-					</div>
-					<div class="col-lg-6 mt-lg-0 mt-4">
-						<div class="position-relative">
-							<img src="assets/images/Teambuilding4.jpg" alt=""
-								class="radius-image img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-6 mt-5 pt-lg-4">
-						<div class="position-relative">
-							<img src="assets/images/teambuildin5.jpg" alt=""
-								class="radius-image img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-6 mt-5 align-self pl-lg-5 pt-lg-4">
-						<div class="title-content text-left">
-							<h6 class="title-subhny mb-2">
-								<span>Team-building classification</span>
-							</h6>
-							<h3 class="title-w3l">Team Building Outdoor.</h3>
-						</div>
-
-						<p class="mt-md-4 mt-3">Lorem ipsum viverra feugiat. Pellen
-							tesque libero ut justo, ultrices in ligula. Semper at
-							tempufddfel. Lorem ipsum dolor sit amet elit. Non quae, fugiat
-							nihil ad. Lorem ipsum dolor sit amet. Lorem ipsum init dolor sit,
-							amet elit. Dolor ipsum non velit, culpa! Vivamus a et ut justo,
-							init in dolor et.</p>
-						<a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="#">
-							Read More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--//about-section-->
-	<!--/w3l-index2-->
-	<section class="w3l-index2" id="about1">
-		<div class="midd-w3 py-5">
-			<div class="container py-lg-5 py-md-4 py-2">
-				<div class="row">
-					<div class="col-lg-6 left-wthree-img">
-						<div class="position-relative">
-							<img src="assets/images/teambuildin6.jpg" alt=""
-								class="radius-image img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-6 mt-lg-0 mt-5 pl-lg-5 align-self">
-						<div class="title-content text-left">
-							<h6 class="title-subhny mb-2">
-								<span>Why Choose Us</span>
-							</h6>
-							<h3 class="title-w3l">Why EventHolding?</h3>
-						</div>
-						<p class="mt-4">With the preparation from a->z for a joyful
-							and meaningful event. Semper at tempufddfel. We will bring
-							satisfaction to you when join the event organized by our
-							partners. Learn more about our work!</p>
-						<ul class="w3l-right-book mt-4">
-							<li><span class="fa fa-check" aria-hidden="true"></span>Connecting
-								many reputable organizations</li>
-							<li><span class="fa fa-check" aria-hidden="true"></span>Convenient
-								Member Benefits</li>
-							<li><span class="fa fa-check" aria-hidden="true"></span>Safe
-								- Flexible; Real services - Real reviews</li>
-						</ul>
-						<a href="#" class="btn btn-style btn-primary mt-4">Read More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--//w3l-index2-->
-	<!-- /home-page-video-popup-->
-	<section class="w3l-index5 py-5" id="about">
-		<div class="new-block py-md-5 py-3">
-			<div class="container py-lg-5">
-				<div class="row middle-section align-self">
-					<div class="col-lg-7 video-info pr-lg-5">
-						<div class="title-content text-left">
-							<h6 class="title-subhny three mb-2">
-								<span>Better pet nutrition.</span>
-							</h6>
-							<h3 class="title-w3l two pr-lg-5">The finest fresh food and
-								all your pet needs.</h3>
-							<p class="mt-3 pr-lg-5">Lorem ipsum, dolor sit amet
-								consectetur adipisicing elit.Lorem ipsum dolor sit amet elit
-								consec tetur adipisi elit. Lorem ipsum dolor sit amet elit
-								consec tetur adipisi elit. Iure voluptatibus explicabo officia.</p>
-							<a href="contact.html"
-								class="btn btn-style btn-outline-light mt-sm-5 mt-4">Contact
-								Now </a>
-						</div>
-					</div>
-					<div class="col-lg-5 history-info mt-5 pl-lg-5 align-self">
-						<div
-							class="position-relative mt-lg-0 mt-5 pt-lg-0 pt-5 pb-lg-0 pb-5">
-							<a href="#small-dialog"
-								class="popup-with-zoom-anim play-view text-center position-absolute">
-								<span class="video-play-icon"> <span class="fa fa-play"></span>
-							</span>
-							</a>
-							<!-- dialog itself, mfp-hide class is required to make dialog hidden -->
-							<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-								<iframe src="https://player.vimeo.com/video/464544767"
-									width="640" height="360" frameborder="0"
-									allow="autoplay; fullscreen; picture-in-picture"
-									allowfullscreen></iframe>
-							</div>
-						</div>
-					</div>
-					<!-- dialog itself, mfp-hide class is required to make dialog hidden -->
-					<!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-            <iframe src="https://player.vimeo.com/video/101587706" frameborder="0" allow="autoplay; fullscreen"
-              allowfullscreen></iframe>
-          </div> -->
-					s
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- //home-page-video-popup-->
-
-	<!-- home page block grids -->
-	<section class="w3l-blog-single py-5" id="blogs">
-		<div class="container py-md-5 py-2">
-			<div class="title-content text-left">
-				<h6 class="title-subhny mb-2">
-					<span>Our Posts</span>
-				</h6>
-				<h3 class="title-w3l">Recent Blog Posts.</h3>
-			</div>
-			<div class="row text11-content">
-				<div class="col-md-6 item mt-5">
-					<div class="single-left1 mb-0">
-						<div class="blg-img">
-							<a href="#"><img src="assets/images/b5.jpg" alt=" "
-								class="img-responsive img-fluid">
-								<div class="bl-top">
-									<h4>12 Mar</h4>
-								</div> </a>
-						</div>
-						<div class="btom-cont">
-							<h5 class="card-title">
-								<a href="#">Germs Thrive the Office! Your Health Risk?</a>
-							</h5>
-							<ul class="admin-post">
-								<li><a href="#"><span class="fa fa-user"></span> Posted
-										by Admin</a></li>
-								<li><a href="#"><span class="fa fa-comments-o"></span>Comments
-										(20)</a></li>
-							</ul>
-							<p class="">Lorem ipsum dolor sit amet, elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim sunt in culpa qui officia deserunt.</p>
-							<a href="#" class="btn btn-style btn-primary mt-4">Read More</a>
-
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 item mt-5">
-					<div class="single-left1 mb-0">
-						<div class="blg-img">
-							<a href="#"><img src="assets/images/b6.jpg" alt=" "
-								class="img-responsive img-fluid">
-								<div class="bl-top">
-									<h4>14 Mar</h4>
-								</div> </a>
-						</div>
-
-						<div class="btom-cont">
-							<h5 class="card-title">
-								<a href="#">Germs Thrive the Office! Your Health Risk?</a>
-							</h5>
-							<ul class="admin-post">
-								<li><a href="#"><span class="fa fa-user"></span> Posted
-										by Admin</a></li>
-								<li><a href="#"><span class="fa fa-comments-o"></span>Comments
-										(20)</a></li>
-							</ul>
-							<p class="">Lorem ipsum dolor sit amet, elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim sunt in culpa qui officia deserunt.</p>
-							<a href="#" class="btn btn-style btn-primary mt-4">Read More</a>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- //home page block grids -->
-	<!-- testimonials section -->
-	<section class="w3l-clients w3l-test py-5" id="testimonials">
-		<div class="container py-lg-5 py-md-4 pt-2 pb-5">
-			<div class="row w3test-grids p-md-5 pb-0">
-				<div class="col-lg-4 testimonials-con-left-info">
-					<div class="title-content text-left p-xl-3">
-						<h6 class="title-subhny mb-2">
-							<span>Reviews</span>
-						</h6>
-						<h3 class="title-w3l two">Testimonials</h3>
-						<p class="test-p mt-3">Lorem ipsum viverra feugiat. Pellen
-							tesque libero ut justo, ultrices in ligula. Semper at
-							tempufddfel. Lorem ipsum viverra feugiat.</p>
-					</div>
-				</div>
-				<div class="col-lg-8 testimonials-con-right mt-lg-0 mt-5 p-xl-3">
-					<div id="owl-demo2" class="owl-carousel owl-theme">
-						<div class="item">
-							<div class="testimonial-content">
-								<div class="testimonial">
-									<blockquote>
-										<q>Pellen tesque libero ut justo</q>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet elit. hic odio tenetur. ante
-										ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-								</div>
-								<div class="bottom-info mt-4">
-									<a class="comment-img" href="#url"><img
-										src="assets/images/team1.jpg" class="img-fluid radius-image"
-										alt="placeholder image"></a>
-									<div class="people-info align-self">
-										<h3>Johnson william</h3>
-										<p class="identity">Example City</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-content">
-								<div class="testimonial">
-									<blockquote>
-										<q>Lorem ipsum dolor sit amet</q>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet elit. hic odio tenetur. ante
-										ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-								</div>
-								<div class="bottom-info mt-4">
-									<a class="comment-img" href="#url"><img
-										src="assets/images/team2.jpg" class="img-fluid radius-image"
-										alt="placeholder image"></a>
-									<div class="people-info align-self">
-										<h3>Alexander sakura</h3>
-										<p class="identity">Example City</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-content">
-								<div class="testimonial">
-									<blockquote>
-										<q>Pellen tesque libero ut justo</q>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet elit. hic odio tenetur. ante
-										ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-								</div>
-								<div class="bottom-info mt-4">
-									<a class="comment-img" href="#url"><img
-										src="assets/images/team3.jpg" class="img-fluid radius-image"
-										alt="placeholder image"></a>
-									<div class="people-info align-self">
-										<h3>John wilson</h3>
-										<p class="identity">Example City</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-content">
-								<div class="testimonial">
-									<blockquote>
-										<q>Lorem ipsum dolor sit amet</q>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet elit. hic odio tenetur. ante
-										ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-								</div>
-								<div class="bottom-info mt-4">
-									<a class="comment-img" href="#url"><img
-										src="assets/images/team4.jpg" class="img-fluid radius-image"
-										alt="placeholder image"></a>
-									<div class="people-info align-self">
-										<h3>Julia sakura</h3>
-										<p class="identity">Example City</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-content">
-								<div class="testimonial">
-									<blockquote>
-										<q>Pellen tesque libero ut justo</q>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet elit. hic odio tenetur. ante
-										ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-								</div>
-								<div class="bottom-info mt-4">
-									<a class="comment-img" href="#url"><img
-										src="assets/images/team5.jpg" class="img-fluid radius-image"
-										alt="placeholder image"></a>
-									<div class="people-info align-self">
-										<h3>John wilson</h3>
-										<p class="identity">Example City</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-content">
-								<div class="testimonial">
-									<blockquote>
-										<q>Lorem ipsum dolor sit amet.</q>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet elit. hic odio tenetur. ante
-										ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-								</div>
-								<div class="bottom-info mt-4">
-									<a class="comment-img" href="#url"><img
-										src="assets/images/team3.jpg" class="img-fluid radius-image"
-										alt="placeholder image"></a>
-									<div class="people-info align-self">
-										<h3>Julia sakura</h3>
-										<p class="identity">Example City</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-		</div>
-	</section>
-	<!-- //testimonials section -->
-	<!-- footer -->
-	<footer class="w3l-footer-29-main">
-		<div class="footer-29-w3l py-5">
-			<div class="container py-lg-4">
-				<div class="row footer-top-29">
-					<div class="col-lg-4 col-md-6  footer-list-29 footer-1 pr-lg-5">
-						<div class="footer-logo mb-3">
-							<a class="footer-brand-logo" href="index.html">Event<span
-								class="sublog">Holding.</span></a>
-
-						</div>
-						<p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo,
-							ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit
-							amet Semper at elit.</p>
-						<div class="main-social-footer-29 mt-4">
-							<a href="#facebook" class="facebook"><span
-								class="fa fa-facebook"></span></a> <a href="#twitter"
-								class="twitter"><span class="fa fa-twitter"></span></a> <a
-								href="#instagram" class="instagram"><span
-								class="fa fa-instagram"></span></a> <a href="#linkedin"
-								class="linkedin"><span class="fa fa-linkedin"></span></a>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 footer-list-29 footer-2 mt-sm-0 mt-5">
-						<h6 class="footer-title-29">Subscribe Newsletter</h6>
-						<form action="#" method="post" class="forms-25-info mt-4 mb-2">
-							<div class="forms-gds">
-								<input type="email" name="" placeholder="Enter your email">
-								<button class="btn btn-style btn-primary">Subscribe</button>
-							</div>
-							<p class="mt-4 text-left">
-								By submitting this form, you agree to the <a href="#">privacy
-									policy</a> and <a href="#">terms of use</a>
-							</p>
-						</form>
-					</div>
-					<div
-						class="col-lg-4 col-md-6  footer-list-29 footer-4 mt-lg-0 mt-5 pl-lg-5">
-						<h6 class="footer-title-29">Instagram</h6>
-						<ul class="w3linst-imgs row">
-							<li class="col-4"><a href="#"><img
-									src="assets/images/b1.jpg" alt=""
-									class="radius-image img-fluid"></a></li>
-							<li class="col-4"><a href="#"><img
-									src="assets/images/b2.jpg" alt=""
-									class="radius-image img-fluid"></a></li>
-							<li class="col-4"><a href="#"><img
-									src="assets/images/b3.jpg" alt=""
-									class="radius-image img-fluid"></a></li>
-							<li class="col-4 mt-4"><a href="#"><img
-									src="assets/images/b4.jpg" alt=""
-									class="radius-image img-fluid"></a></li>
-							<li class="col-4 mt-4"><a href="#"><img
-									src="assets/images/b5.jpg" alt=""
-									class="radius-image img-fluid"></a></li>
-							<li class="col-4 mt-4"><a href="#"><img
-									src="assets/images/b6.jpg" alt=""
-									class="radius-image img-fluid"></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- //footer -->
-		<!-- copyright -->
-		<section class="w3l-copyright">
-			<div class="container">
-				<div class="row bottom-copies">
-					<p class="col-lg-8 copy-footer-29"></p>
-
-					<div class="col-lg-4 footer-list-29">
-						<ul class="d-flex text-lg-right">
-							<li><a href="#careers"> Careers</a></li>
-							<li class="mx-lg-5 mx-md-4 mx-3"><a
-								href="#privacymy-lg-0 my-4">Privacy Policy</a></li>
-							<li><a href="contact.html">Contact us</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</section>
-		<!-- move top -->
-		<button onclick="topFunction()" id="movetop" title="Go to top">
-			&#10548;</button>
-		<script>
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction()
-      };
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          document.getElementById("movetop").style.display = "block";
-        } else {
-          document.getElementById("movetop").style.display = "none";
-        }
-      }
-
-      // When the user clicks on the button, scroll to the top of the document
-      function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-    </script>
-		<!-- /move top -->
-	</footer>
-
-	<!-- //copyright -->
-	<!-- Template JavaScript -->
-	<script src="assets/js/jquery-3.3.1.min.js"></script>
-	<script src="assets/js/theme-change.js"></script>
-	<!-- owlcarousel -->
-	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.js"></script>
-	<!-- script for banner slider-->
-	<script>
-    $(document).ready(function () {
-      $('.owl-one').owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: false,
-        responsiveClass: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplaySpeed: 1000,
-        autoplayHoverPause: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 1
-          },
-          667: {
-            items: 1
-          },
-          1000: {
-            items: 1
-          }
-        }
-      })
-    })
-  </script>
-	<!-- //script -->
-	<!-- script for tesimonials carousel slider -->
-	<script>
-    $(document).ready(function () {
-      $("#owl-demo2").owlCarousel({
-        loop: true,
-        nav: false,
-        margin: 50,
-        responsiveClass: true,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          736: {
-            items: 1,
-            nav: false
-          },
-          991: {
-            items: 2,
-            margin: 30,
-            nav: false
-          },
-          1080: {
-            items: 2,
-            nav: false
-          }
-        }
-      })
-    })
-  </script>
-	<!-- //script for tesimonials carousel slider -->
-
-	<!-- stats number counter-->
-	<script src="assets/js/jquery.waypoints.min.js"></script>
-	<script src="assets/js/jquery.countup.js"></script>
-	<script>
-    $('.counter').countUp();
-  </script>
-	<!-- //stats number counter -->
-	<!-- image popup -->
-	<script src="assets/js/jquery.magnific-popup.js"></script>
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-	<script>
-    $(document).ready(function () {
-      $('.popup-with-zoom-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
-      });
-
-      $('.popup-with-move-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-slide-bottom'
-      });
-    });
-  </script>
-	<!-- //video popup -->
-	<!--/MENU-JS-->
-	<script>
-    $(window).on("scroll", function () {
-      var scroll = $(window).scrollTop();
-
-      if (scroll >= 80) {
-        $("#site-header").addClass("nav-fixed");
-      } else {
-        $("#site-header").removeClass("nav-fixed");
-      }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-      $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-      if ($(window).width() > 991) {
-        $("header").removeClass("active");
-      }
-      $(window).on("resize", function () {
-        if ($(window).width() > 991) {
-          $("header").removeClass("active");
-        }
-      });
-    });
-  </script>
-	<!--//MENU-JS-->
-	<script src="assets/js/ajax-popup.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-
-
-</body>
-
+                <h1 class="text-muted">VNPAY Payment</h1>
+            </div>
+            <h3>Order Payment</h3>
+            <div class="table-responsive">
+                <form action="VNPaymentServlet" id="frmCreateOrder" method="post">   
+                	<div class="form-group">
+                        <input class="form-control" name="vnp_TxnRef" id="vnp_TxnRef" type="text" value="<%=lastestIdOrder %>"/>
+                    </div>     
+                    <div class="form-group">
+                        <label for="language">Service Name</label>
+                        <select name="ordertype" id="ordertype" class="form-control">
+                            <option value="billpayment"><%=ListService.get(0).getNameService()%></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Số tiền</label>
+                        <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." 
+                        data-val-required="The Amount field is required." id="amount" max="100000000" min="1" 
+                        name="amount" type="number" value="<%=(int)ListService.get(0).getPrice() * 24000%>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="OrderDescription">Nội dung thanh toán</label>
+                        <textarea class="form-control" cols="20" id="vnp_OrderInfo" name="vnp_OrderInfo" rows="2">Payment for event service at <%=ListService.get(0).getAreaHolding()%></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bankcode">Ngân hàng</label>
+                        <select name="bankcode" id="bankcode" class="form-control">
+                            <option value="">Không chọn </option>
+                            <option value="NCB">  	Ngan hang NCB</option>
+                            <option value="SACOMBANK">Ngan hang SacomBank  </option>
+                            <option value="EXIMBANK"> 	Ngan hang EximBank </option>
+                            <option value="MSBANK"> 	Ngan hang MSBANK </option>
+                            <option value="NAMABANK"> 	Ngan hang NamABank </option>
+                            <option value="VISA">  	Thanh toan qua VISA/MASTER</option>
+                            <option value="VNMART">  	Vi dien tu VnMart</option>
+                            <option value="VIETINBANK">Ngan hang Vietinbank  </option>
+                            <option value="VIETCOMBANK"> 	Ngan hang VCB </option>
+                            <option value="HDBANK">Ngan hang HDBank</option>
+                            <option value="DONGABANK">  	Ngan hang Dong A</option>
+                            <option value="TPBANK"> 	Ngân hàng TPBank </option>
+                            <option value="OJB">  	Ngân hàng OceanBank</option>
+                            <option value="BIDV"> Ngân hàng BIDV </option>
+                            <option value="TECHCOMBANK"> 	Ngân hàng Techcombank </option>
+                            <option value="VPBANK"> 	Ngan hang VPBank </option>
+                            <option value="AGRIBANK"> 	Ngan hang Agribank </option>
+                            <option value="MBBANK"> 	Ngan hang MBBank </option>
+                            <option value="ACB"> Ngan hang ACB </option>
+                            <option value="OCB"> Ngan hang OCB </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Ngôn ngữ</label>
+                        <select name="language" id="language" class="form-control">
+                            <option value="vn">Tiếng Việt</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-default">Thanh toán</button>
+                </form>
+            </div>
+            <p>
+                &nbsp;
+            </p>
+            <footer class="footer">
+                <p>&copy; VNPAY 2015</p>
+            </footer>
+        </div>  
+        <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet" />
+        <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
+        <script type="text/javascript">
+            $("#frmCreateOrder").submit(function () {
+                var postData = $("#frmCreateOrder").serialize();
+                var submitUrl = $("#frmCreateOrder").attr("action");
+                $.ajax({
+                    type: "POST",
+                    url: submitUrl,
+                    data: postData,
+                    dataType: 'JSON',
+                    success: function (x) {
+                    	console.log(x.data);
+                        if (x.code === '00') {
+                            if (window.vnpay) {
+                                vnpay.open({width: 768, height: 600, url: x.data});
+                            } else {
+                                location.href = x.data;
+                            }
+                            return false;
+                        } else {
+                            alert(x.Message);
+                        }
+                    }
+                });
+                return false;
+            });
+        </script>       
+    </body>
 </html>

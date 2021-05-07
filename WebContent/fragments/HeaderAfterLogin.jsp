@@ -29,12 +29,12 @@
 						<ul class="navbar-nav">
 							<li class="nav-item active"><a class="nav-link"
 								href="ShowHomepageServlet">Home </a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">About</a>
+							<li class="nav-item"><a class="nav-link" href="#">About</a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
-								href="services.html">Services</a></li>
+								href="ShowAllServiceServlet">Services</a></li>
 
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
+							<li class="nav-item"><a class="nav-link" href="#">Contact</a>
 							</li>
 						</ul>
 						<ul class="navbar-nav search-right mt-lg-0 mt-2">

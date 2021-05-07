@@ -177,7 +177,16 @@
 						</h4>
 					</div>
 				</div>
+				<div class="col-lg-8 col-md-12 col-24 grids-feature">
+				</div>
+				<div class="col-lg-4 col-md-6 col-12 grids-feature">
+					<a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="GetEventOrganizerServlet" 
+					style="margin-left: 7em; padding: 18px 34px; font-size: 19px;">
+							My Event Service</a>
+				</div>
+				
 			</div>
+			
 		</div>
 	</section>
 	<!--//feature-grids-->
@@ -339,7 +348,7 @@
 				<div class="col-md-6 item mt-5">
 					<div class="single-left1 mb-0">
 						<div class="blg-img">
-							<a href="#"><img src="assets/images/b5.jpg" alt=" "
+							<a href="#"><img src="assets/images/acc.jpg" alt=" "
 								class="img-responsive img-fluid">
 								<div class="bl-top">
 									<h4>12 Mar</h4>
@@ -347,7 +356,7 @@
 						</div>
 						<div class="btom-cont">
 							<h5 class="card-title">
-								<a href="#">Germs Thrive the Office! Your Health Risk?</a>
+								<a href="#">7 Top-Notch Team-Building Tactics</a>
 							</h5>
 							<ul class="admin-post">
 								<li><a href="#"><span class="fa fa-user"></span> Posted
@@ -366,7 +375,7 @@
 				<div class="col-md-6 item mt-5">
 					<div class="single-left1 mb-0">
 						<div class="blg-img">
-							<a href="#"><img src="assets/images/b6.jpg" alt=" "
+							<a href="#"><img src="assets/images/kids-team.jpg" alt=" "
 								class="img-responsive img-fluid">
 								<div class="bl-top">
 									<h4>14 Mar</h4>
@@ -396,7 +405,7 @@
 	</section>
 	<!-- //home page block grids -->
 	<!-- testimonials section -->
-	<section class="w3l-clients w3l-test py-5" id="testimonials">
+	<!-- <section class="w3l-clients w3l-test py-5" id="testimonials">
 		<div class="container py-lg-5 py-md-4 pt-2 pb-5">
 			<div class="row w3test-grids p-md-5 pb-0">
 				<div class="col-lg-4 testimonials-con-left-info">
@@ -538,7 +547,7 @@
 
 
 		</div>
-	</section>
+	</section> -->
 	<!-- //testimonials section -->
 	<% } %>	
 		<!-- move top -->

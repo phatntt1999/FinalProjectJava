@@ -23,6 +23,11 @@
 
 </head>
 <body>
+	<%
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login-form.jsp?error=1");
+		} else {
+	%>
 	<!--/inner-page-->
   <div class="inner-banner">
   </div>
@@ -107,8 +112,8 @@
         <div class="row" style="margin-bottom: 3em;">
           <div class="col-lg-4 column mt-lg-0 mt-md-5 mt-4">
             <div class="companies-img">
-           	 <a href="ShowDetailServiceServlet?serId=<%=ls.getIdService()%>&searchLocation=<%=ls.getAreaHolding()%>&dateHolding=<%=dateHolding%>">
-           	 <img src="assets/images/b3.jpg" class="img-fluid radius-image" alt=""></a>
+           	 <a href="ShowDetailServiceServlet?serId=<%=ls.getIdService()%>&searchLocation=<%=ls.getAreaHolding()%>&dateHolding=<%=dateHolding%>&noOfParticipant=<%=noOfParticipant%>">
+           	 <img src="assets/images/abzz.jpg" class="img-fluid radius-image" alt=""></a>
               
             </div>
           </div>
@@ -143,10 +148,179 @@
         <%} %>
       </div>
     </div>
+    <%} %>
   </section>
   <!-- //content-with-photo-16 -->
   
   <jsp:include page="fragments/Footer.jsp"></jsp:include>
-  
+  <!-- move top -->
+		<button onclick="topFunction()" id="movetop" title="Go to top">
+			&#10548;</button>
+		<script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+		<!-- /move top -->
+
+	<!--  JavaScript -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/theme-change.js"></script>
+	<!-- owlcarousel -->
+	<!-- owl carousel -->
+	<script src="assets/js/owl.carousel.js"></script>
+	<!-- script for banner slider-->
+	<script>
+    $(document).ready(function () {
+      $('.owl-one').owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: false,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1
+          },
+          480: {
+            items: 1
+          },
+          667: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      })
+    })
+  </script>
+	<!-- //script -->
+	<!-- script for tesimonials carousel slider -->
+	<script>
+    $(document).ready(function () {
+      $("#owl-demo2").owlCarousel({
+        loop: true,
+        nav: false,
+        margin: 50,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          991: {
+            items: 2,
+            margin: 30,
+            nav: false
+          },
+          1080: {
+            items: 2,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+	<!-- //script for tesimonials carousel slider -->
+
+	<!-- stats number counter-->
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.countup.js"></script>
+	<script>
+    $('.counter').countUp();
+  </script>
+	<!-- //stats number counter -->
+	<!-- image popup -->
+	<script src="assets/js/jquery.magnific-popup.js"></script>
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script>
+    $(document).ready(function () {
+      $('.popup-with-zoom-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-zoom-in'
+      });
+
+      $('.popup-with-move-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-slide-bottom'
+      });
+    });
+  </script>
+	<!-- //video popup -->
+	<!--/MENU-JS-->
+	<script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+	<!--//MENU-JS-->
+	<script src="assets/js/ajax-popup.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

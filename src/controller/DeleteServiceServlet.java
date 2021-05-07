@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bo.DeleteAccountBO;
 
@@ -37,8 +38,15 @@ public class DeleteServiceServlet extends HttpServlet {
 
 		DeleteAccountBO deleteServiceBO = new DeleteAccountBO();
 		deleteServiceBO.deleteService(SerId);
-
-		response.sendRedirect("ShowDataAdminServlet?message=1");
+		HttpSession session = request.getSession();
+		if("admin@gmail.com".equals(session.getAttribute("userName"))) {
+			response.sendRedirect("ShowDataAdminServlet?message=1");
+		}
+		else {
+			response.sendRedirect("GetEventOrganizerServlet?message=1");
+		}
+		
+		
 	}
 
 }

@@ -137,9 +137,9 @@
                     <td><%=acc.getAccUserName() %></td>
                     <td><%=acc.getAccPassWord() %></td>
                     <td><%=acc.getRolekey() %></td>
-                    <td><input type="button" 
+                    <td><%-- <input type="button" 
 	             		Onclick="location.href='ShowEditProductServlet?proId=<%=acc.getAccUserName()%>'"
-	             		value="Edit" />
+	             		value="Edit" /> --%>
 	             		<input type="button" 
 	             		Onclick="deleteAccount('<%=acc.getAccUserName()%>')" 
 	             		value="Delete" /></td>
@@ -173,9 +173,7 @@
                     <td><%=ser.getIdOrganizer()%></td>
                     <td><%=ser.getNumberOfPeople()%></td>
                     <td><%=ser.getAreaHolding()%></td>
-                    <td><input type="button" 
-	             		Onclick="location.href='ShowEditProductServlet?proId=<%=ser.getIdService()%>'"
-	             		value="Edit" />
+                    <td>
 	             		<input type="button" 
 	             		Onclick="deleteService('<%=ser.getIdService()%>')" 
 	             		value="Delete" /></td>

@@ -25,7 +25,9 @@ public class AddNewServiceBO {
 				lastestIdService = StringCommon.convertNumberToString(orderNumber, 5);
 			}
 			
+			//Get the IdOrganizer through userName in session
 			String idOrganizer = addNewServiceDAO.getIdOrganizer(userName);
+			
 			//Put new IdService into addNewServiceDAO.addNewService
 			String returnedMessage = addNewServiceDAO.insertArticle(lastestIdService, idOrganizer, nameEvent, noOfParticipant, description, area);
 
